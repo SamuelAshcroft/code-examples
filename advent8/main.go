@@ -87,11 +87,9 @@ func main() {
 	visibleTotal := 0
 	for y := 0; y < len(input); y++ {
 		for x := 0; x < len(input[0]); x++ {
-
 			if visibleTable[y][x] {
 				visibleTotal++
 			}
-
 		}
 	}
 
@@ -108,44 +106,41 @@ func main() {
 			var lDist int
 
 			for i := 1; true; i++ {
-				iDist = i
-				if x-i == -1 {
-					iDist = iDist - 1
+				if x-i == -1 { //if we've hit gone past the edge of the forest, we need to stop
 					break
 				}
+				//and we need to use the distance from the previous loop if we have gone past the edge
+				iDist = i
 				if input[y][x] <= input[y][x-i] {
 					break
 				}
 			}
 
 			for j := 1; true; j++ {
-				jDist = j
 				if x+j == xlen {
-					jDist = jDist - 1
 					break
 				}
+				jDist = j
 				if input[y][x] <= input[y][x+j] {
 					break
 				}
 			}
 
 			for k := 1; true; k++ {
-				kDist = k
 				if y-k == -1 {
-					kDist = kDist - 1
 					break
 				}
+				kDist = k
 				if input[y][x] <= input[y-k][x] {
 					break
 				}
 			}
 
 			for l := 1; true; l++ {
-				lDist = l
 				if y+l == ylen {
-					lDist = lDist - 1
 					break
 				}
+				lDist = l
 				if input[y][x] <= input[y+l][x] {
 					break
 				}
